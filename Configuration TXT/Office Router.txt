@@ -1,0 +1,108 @@
+Current configuration : 1208 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname R_OFFC_DOJMTE
+!
+!
+!
+enable secret 5 $1$mERr$hx5rVt7rPNoS4wqbXKX7m0
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO2811/K9 sn FTX1017TH23-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ no ip address
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/1.5
+ encapsulation dot1Q 5
+ ip address 192.168.13.1 255.255.255.0
+!
+interface FastEthernet0/1.200
+ encapsulation dot1Q 200 native
+ ip address 192.168.207.1 255.255.255.0
+!
+interface Serial0/3/0
+ no ip address
+ clock rate 2000000
+ shutdown
+!
+interface Serial0/3/1
+ ip address 9.9.8.17 255.255.255.252
+ clock rate 2000000
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router rip
+ version 2
+ network 9.0.0.0
+ network 13.0.0.0
+ network 192.168.13.0
+ network 192.168.207.0
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+banner motd ^CBienvenido a R_OFFC_DOJMTE^C
+!
+!
+!
+!
+line con 0
+ password cisco
+ login
+!
+line aux 0
+!
+line vty 0 4
+ password cisco
+ login
+line vty 5 15
+ password cisco
+ login
+!
+!
+!
+end

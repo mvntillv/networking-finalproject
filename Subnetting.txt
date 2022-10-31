@@ -1,0 +1,58 @@
+A. Red “Campus”: 191.50+X.0.0/16. Considere la información de red de la Tabla 1 y que cada VLAN requiere 254 clientes.
+
+Primero tomamos el número de clientes requeridos y lo convertimos a binario, obteniendo 11111110; posteriormente, hallamos la nueva máscara
+de subred, apagando los bits necesarios para la cantidad de clientes, en este caso 8. De esta manera, se obtiene la nueva máscara de subred
+/24, 255.255.255.0, 11111111.11111111.11111111.00000000 en su forma binaria.
+Por último, para hallar el incremento, se toma la posición del último bit de la máscara de subred (1) y se definen los intervalos de red.
+
+191.57.0.0 - 191.57.0.255
+191.57.1.0 - 191.57.1.255
+191.57.2.0 - 191.57.2.255
+...
+
+/24
+
+Espacios seleccionados:
+191.57.20.0/24
+191.57.35.0/24
+191.57.40.0/24
+191.57.55.0/24
+191.57.99.0/24
+
+B. WAN (enlace seriales y Cloud): 12.130.2+X.0/24.
+
+Debido a que son tres enrutadores y tres enlaces de área amplia, el espacio de direcciones debe ser dividido en tres subredes, de esta
+manera, se dispone del espacio de direcciones 12.130.9.0/24, y para segmentarlo hay que seguir este procedimiento:
+Primero, convertimos el número de divisiones requerido (3) a binario (11), así de logra determinar que se requieren dos bits para el 
+número de divisiones requeridas. Luego, tomamos nuevamente nuestra máscara de subred original, que es 255.255.255.0 y nos fijamos en su 
+representación binaria (11111111.11111111.11111111.00000000), ahora solo agregamos los bits necesarios para el número de divisiones, dando
+como resultado (11111111.11111111.11111111.11000000), que es la nueva máscara de subred y se debe convertir a decimal 255.255.255.192.
+Por último, para hallar el incremento, se toma la posición del último bit de la máscara de subred (64) y se definen los intervalos de red.
+
+12.130.9.0 - 12.130.9.63
+12.130.9.64 - 12.130.9.127
+12.130.9.128 - 12.130.9.191
+12.130.9.192 - 12.130.9.255
+
+/26
+
+Espacios seleccionados:
+12.130.9.0/26
+12.130.9.64/26
+
+C. LAN de servidores: 209.175.100+X.0/24. Considere que la LAN requiere 30 clientes.
+
+Primero tomamos el número de clientes requeridos y lo convertimos a binario, obteniendo 00011110; posteriormente, hallamos la nueva máscara
+de subred, apagando los bits necesarios para la cantidad de clientes, en este caso 5. De esta manera, se obtiene la nueva máscara de subred
+/27, 255.255.255.224, 11111111.11111111.11111111.11100000 en su forma binaria.
+Por último, para hallar el incremento, se toma la posición del último bit de la máscara de subred (32) y se definen los intervalos de red.
+
+209.175.107.0 - 209.175.107.31
+209.175.107.32 - 209.175.107.63
+209.175.107.64 - 209.175.107.95
+...
+
+/27
+
+Espacios seleccionados:
+209.175.107.0/27
